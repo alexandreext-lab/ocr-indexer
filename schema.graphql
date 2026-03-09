@@ -26,7 +26,9 @@ type AssetContract_RegistryFeeShareUpdated {
 type Asset_SubscriptionAdded {
   id: ID!
   user: String!
-  expiresAt: BigInt!
+  startTime: BigInt!
+  endTime: BigInt!
+  nonce: BigInt!
 }
 
 type Asset_SubscriptionPriceUpdated {

@@ -94,7 +94,9 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
   const entity: Asset_SubscriptionAdded = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user,
-    expiresAt: event.params.expiresAt,
+    startTime: event.params.startTime,
+    endTime: event.params.endTime,
+    nonce: event.params.nonce,
   };
 
   context.Asset_SubscriptionAdded.set(entity);
@@ -109,14 +111,14 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
   const subscription: Subscription = existingSubscription
     ? {
         ...existingSubscription,
-        expiresAt: event.params.expiresAt,
+        expiresAt: event.params.endTime,
         isActive: true,
       }
     : {
         id: subscriptionId,
         asset_id: assetAddress,
         user,
-        expiresAt: event.params.expiresAt,
+        expiresAt: event.params.endTime,
         isActive: true,
       };
 

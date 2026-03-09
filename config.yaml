@@ -16,7 +16,7 @@ contracts:
     abi_file_path: ./abis/Asset.json
     handler: ./src/EventHandlers.ts
     events:
-      - event: SubscriptionAdded(address indexed user, uint256 expiresAt)
+      - event: SubscriptionAdded(address indexed user, uint256 indexed startTime, uint256 indexed endTime, uint256 nonce)
       - event: SubscriptionPriceUpdated(uint256 newSubscriptionPrice)
       - event: SubscriptionRevoked(address indexed user)
       - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
