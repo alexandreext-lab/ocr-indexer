@@ -108,18 +108,20 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
 
   const existingSubscription = await context.Subscription.get(subscriptionId);
 
+  const isActive = event.params.endTime > BigInt(event.block.timestamp);
+
   const subscription: Subscription = existingSubscription
     ? {
         ...existingSubscription,
         expiresAt: event.params.endTime,
-        isActive: true,
+        isActive,
       }
     : {
         id: subscriptionId,
         asset_id: assetAddress,
         user,
         expiresAt: event.params.endTime,
-        isActive: true,
+        isActive,
       };
 
   context.Subscription.set(subscription);
