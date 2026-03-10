@@ -26,7 +26,7 @@ networks:
   - id: 11155111
     start_block: 10299077
     rpc_config:
-      url: https://sepolia.infura.io/v3/06f3f78b0f324d9c8cde54f90cd4fb5b
+      url: https://sepolia.infura.io/v3/$INFURA_API_KEY
     contracts:
       - name: AssetRegistry
         address:
