@@ -14,7 +14,10 @@ import {
   AssetIdToAddress,
 } from "generated";
 
-// ============================================================================ 
+// Demo mode: cap subscription duration to 30 seconds after startTime
+const DEMO_EXPIRY_SECONDS = 30n;
+
+// ============================================================================
 // AssetRegistry event handlers
 // ============================================================================
 AssetRegistry.AssetCreated.handler(async ({ event, context }) => {
@@ -108,19 +111,21 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
 
   const existingSubscription = await context.Subscription.get(subscriptionId);
 
-  const isActive = event.params.endTime > BigInt(event.block.timestamp);
+  const demoExpiry = event.params.startTime + DEMO_EXPIRY_SECONDS;
+  const effectiveExpiry = demoExpiry < event.params.endTime ? demoExpiry : event.params.endTime;
+  const isActive = effectiveExpiry > BigInt(event.block.timestamp);
 
   const subscription: Subscription = existingSubscription
     ? {
         ...existingSubscription,
-        expiresAt: event.params.endTime,
+        expiresAt: effectiveExpiry,
         isActive,
       }
     : {
         id: subscriptionId,
         asset_id: assetAddress,
         user,
-        expiresAt: event.params.endTime,
+        expiresAt: effectiveExpiry,
         isActive,
       };
 
