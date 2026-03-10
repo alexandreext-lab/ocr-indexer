@@ -111,9 +111,10 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
 
   const existingSubscription = await context.Subscription.get(subscriptionId);
 
-  const demoExpiry = event.params.startTime + DEMO_EXPIRY_SECONDS;
+  const blockTs = BigInt(event.block.timestamp);
+  const demoExpiry = blockTs + DEMO_EXPIRY_SECONDS;
   const effectiveExpiry = demoExpiry < event.params.endTime ? demoExpiry : event.params.endTime;
-  const isActive = effectiveExpiry > BigInt(event.block.timestamp);
+  const isActive = effectiveExpiry > blockTs;
 
   const subscription: Subscription = existingSubscription
     ? {
