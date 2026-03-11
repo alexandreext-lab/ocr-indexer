@@ -14,8 +14,8 @@ import {
   AssetIdToAddress,
 } from "generated";
 
-// Demo mode: cap subscription duration to 30 seconds after startTime
-const DEMO_EXPIRY_SECONDS = 30n;
+// Demo mode: cap subscription duration to 5 minutes after block timestamp
+const DEMO_EXPIRY_SECONDS = 300n;
 
 // ============================================================================
 // AssetRegistry event handlers
