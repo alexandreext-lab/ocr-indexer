@@ -26,7 +26,7 @@ networks:
   - id: 11155111
     start_block: 10299077
     rpc_config:
-      url: https://sepolia.infura.io/v3/c337028c4862415f95a7cc92c0b59e6c
+      url: https://sepolia.infura.io/v3/d4726a11181949cd8907e6812dc7ffe2
     contracts:
       - name: AssetRegistry
         address:
@@ -41,6 +41,19 @@ networks:
           - "0x043887c55b378bead8cda17b1498fca5146f7e2e"
           - "0x5b0c3f7c3bd95efdbf913c50be935c9ab969fcd1"
           - "0x827a062637c52be85c3e7b79fd171d3ac21b9bad"
+          - "0x7ddc7e6cd695439459b9da849f006770fdba9f6c"
+          - "0xf7f0639d39c48ace2d2b0a84831805976437a4ec"
+          - "0xe9061243b1e3f291bc76d95b1215f6c7bc5e93d8"
+          - "0x211d19c4e3674d666ef74b9c3b09136acc32672c"
+          - "0x7db28d0adc04e56c781d1e3b7a335d650d0f81ae"
+          - "0xeec728e405ad0f75ea47acb8a9f8ac847a5258d5"
+          - "0xd4d64495211dc198e2f9941b375d1e3b872bf912"
+          - "0x71a734702947068bbbbb3e0ac3b8d72c353c9cd4"
+          - "0xa7e2864ecd676a32e43d561d3b148af5e930870c"
+          - "0x1d72308de1624dd33b88ef4399eaa4c6cac04e3e"
+          - "0x947830eaac9e7b82edf1bfd7583c8a8679127f7f"
+          - "0xc05efb3553cd414199309ce0cae7036b0df59293"
+          - "0xb7aa2e46910e7d46e95af98523c566b9ef634412"
 
   # For local testing, see readme
   # - id: 31337 # Anvil local network
