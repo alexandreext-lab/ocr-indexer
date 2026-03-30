@@ -28,7 +28,9 @@ networks:
     contracts:
       - name: AssetRegistry
         address:
-          - "0x513972072Ae1985506e2FC3b3d9A46fe0F0eCDB5" 
+          - "0x513972072Ae1985506e2FC3b3d9A46fe0F0eCDB5"
+          - "0x5C586A28a97551f8f4f76c933450AC175FdC04a5"
+          - "0x90Ed11A0349Ecde1f80095bd69206aB87AaeCD1f"
       - name: Asset
         address:
           - "0xca6f6d53ec05bbfd0a1888b777ea729549f66454"
@@ -52,6 +54,28 @@ networks:
           - "0x947830eaac9e7b82edf1bfd7583c8a8679127f7f"
           - "0xc05efb3553cd414199309ce0cae7036b0df59293"
           - "0xb7aa2e46910e7d46e95af98523c566b9ef634412"
+          - "0x5c6b0e6170464d7460bd1925fb28720117ffdd44"
+          - "0x4e017c1769b02ad691f284f0290ea5d57c13401d"
+          - "0x489cb6f2e9c46780f9f0e59414576419c61d4571"
+          - "0x669fa85183d52c60ac66f8e6707a09347037cce4"
+          - "0x5ccc9eed84031a36bf7813f06a2d165361e57ec4"
+          - "0xf1859f08d5e5fe9d6a295431c23371d69a670954"
+          - "0x890700d4bfe1aaf9e7539b802202778353d4a54d"
+          - "0xb548333dea0700c026a9a892fbbc08fb7d269823"
+          - "0x8762dd8608635f3194f39b5502bb7db0985fc18d"
+          - "0x00e53e7b83743ce141dc14deb282fe3b550dc99a"
+          - "0x405320cb0f60187366909ab2f3c8a38707544889"
+          - "0xe398dd423be173dae797fa8960df88765affebca"
+          - "0x297321d4d4d4b910327a851c44e969d4861f046f"
+          - "0x34108aacd707b270cd6bd09323fa37c1808be997"
+          - "0x4eb218c9942a6f668f5e5e32df65330301f4d08c"
+          - "0xfa8b76be31304010fa8c3d392421f5da3cf613f0"
+          - "0x90b13ea8d46fbe7df0e3ca0700bada7bec2845e4"
+          - "0x3ff91740fd412f8082c5cd40d2be51598aeaa520"
+          - "0xd9adfc6ead1d5be6ee4a79f1ccb778e0a397f389"
+          - "0xa217954ee364da40bb485e4d8926bf1809a0779e"
+          - "0xd0a12e8cde504d70bcbc34659712eda3f7aa01d6"
+          - "0x8939e3f36232f5a4dc452831972bf2b95f2bb518"
 
   # For local testing, see readme
   # - id: 31337 # Anvil local network
