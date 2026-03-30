@@ -160,6 +160,24 @@ Run the tests with:
 pnpm test
 ```
 
+### Deploying to Envio Hosted Service
+
+1. Push your code to a GitHub repository.
+2. Go to [envio.dev](https://envio.dev) and log in with GitHub.
+3. Select the GitHub organization/account that owns the repo.
+4. Install the **Envio Deployments** GitHub App and grant access to the repo.
+5. Click **Add Indexer** and select the repo.
+6. Configure:
+   - **Config file**: `config.yaml`
+   - **Root directory**: `/`
+   - **Deployment branch**: `master` (or your preferred branch)
+7. Push to the deployment branch to trigger a build.
+8. Monitor sync progress on the Envio dashboard.
+
+The current hosted instance is deployed from [alexandreext-lab/ocr-indexer](https://github.com/alexandreext-lab/ocr-indexer) at:
+
+- **Dashboard**: https://envio.dev/app/alexandreext-lab/ocr-indexer
+
 ### Pre-requisites
 
 - **Node.js**: v20 (required by Envio / HyperIndex setup).
