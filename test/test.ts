@@ -1,14 +1,6 @@
 import assert from "assert";
-import generated from "generated";
-import type {
-  AssetContract_AssetCreated,
-  AssetContract_OwnershipTransferred,
-  AssetContract_CreatorFeeShareUpdated,
-  AssetContract_RegistryFeeShareUpdated,
-  Asset_SubscriptionPriceUpdated,
-  AssetEntity,
-  Subscription,
-} from "generated";
+import generated from "envio";
+import type { AssetContract_AssetCreated, AssetContract_OwnershipTransferred, AssetContract_CreatorFeeShareUpdated, AssetContract_RegistryFeeShareUpdated, Asset_SubscriptionPriceUpdated, AssetEntity, Subscription } from "envio";
 
 const { TestHelpers } = generated;
 const { MockDb, AssetRegistry, Addresses, Asset } = TestHelpers;

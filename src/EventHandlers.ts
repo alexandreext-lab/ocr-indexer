@@ -1,18 +1,4 @@
-import {
-  AssetRegistry,
-  AssetContract_AssetCreated,
-  AssetContract_CreatorFeeShareUpdated,
-  AssetContract_OwnershipTransferred,
-  AssetContract_RegistryFeeShareUpdated,
-  Asset,
-  Asset_SubscriptionAdded,
-  Asset_SubscriptionPriceUpdated,
-  Asset_SubscriptionRevoked,
-  Asset_OwnershipTransferred,
-  AssetEntity,
-  Subscription,
-  AssetIdToAddress,
-} from "generated";
+import { indexer, AssetRegistry, AssetContract_AssetCreated, AssetContract_CreatorFeeShareUpdated, AssetContract_OwnershipTransferred, AssetContract_RegistryFeeShareUpdated, Asset, Asset_SubscriptionAdded, Asset_SubscriptionPriceUpdated, Asset_SubscriptionRevoked, Asset_OwnershipTransferred, AssetEntity, Subscription, AssetIdToAddress } from "envio";
 
 // Demo mode: cap subscription duration to 5 minutes after block timestamp
 const DEMO_EXPIRY_SECONDS = 300n;
@@ -20,7 +6,9 @@ const DEMO_EXPIRY_SECONDS = 300n;
 // ============================================================================
 // AssetRegistry event handlers
 // ============================================================================
-AssetRegistry.AssetCreated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "AssetRegistry", event: "AssetCreated" },
+  async ({ event, context }) => {
   const entity: AssetContract_AssetCreated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     assetId: event.params.assetId,
@@ -60,9 +48,12 @@ AssetRegistry.AssetCreated.handler(async ({ event, context }) => {
   };
 
   context.AssetIdToAddress.set(mapping);
-});
+}
+);
 
-AssetRegistry.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "AssetRegistry", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: AssetContract_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     previousOwner: event.params.previousOwner,
@@ -70,30 +61,39 @@ AssetRegistry.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.AssetContract_OwnershipTransferred.set(entity);
-});
+}
+);
 
-AssetRegistry.CreatorFeeShareUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "AssetRegistry", event: "CreatorFeeShareUpdated" },
+  async ({ event, context }) => {
   const entity: AssetContract_CreatorFeeShareUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     newCreatorFeeShare: event.params.newCreatorFeeShare,
   };
 
   context.AssetContract_CreatorFeeShareUpdated.set(entity);
-});
+}
+);
 
-AssetRegistry.RegistryFeeShareUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "AssetRegistry", event: "RegistryFeeShareUpdated" },
+  async ({ event, context }) => {
   const entity: AssetContract_RegistryFeeShareUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     newRegistryFeeShare: event.params.newRegistryFeeShare,
   };
 
   context.AssetContract_RegistryFeeShareUpdated.set(entity);
-});
+}
+);
 
 // ============================================================================ 
 // Asset event handlers
 // ============================================================================
-Asset.SubscriptionAdded.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Asset", event: "SubscriptionAdded" },
+  async ({ event, context }) => {
   const entity: Asset_SubscriptionAdded = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user,
@@ -131,9 +131,12 @@ Asset.SubscriptionAdded.handler(async ({ event, context }) => {
       };
 
   context.Subscription.set(subscription);
-});
+}
+);
 
-Asset.SubscriptionRevoked.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Asset", event: "SubscriptionRevoked" },
+  async ({ event, context }) => {
   const entity: Asset_SubscriptionRevoked = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user,
@@ -155,18 +158,24 @@ Asset.SubscriptionRevoked.handler(async ({ event, context }) => {
 
     context.Subscription.set(updatedSubscription);
   }
-});
+}
+);
 
-Asset.SubscriptionPriceUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Asset", event: "SubscriptionPriceUpdated" },
+  async ({ event, context }) => {
   const entity: Asset_SubscriptionPriceUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     newSubscriptionPrice: event.params.newSubscriptionPrice,
   };
 
   context.Asset_SubscriptionPriceUpdated.set(entity);
-});
+}
+);
 
-Asset.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Asset", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: Asset_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     previousOwner: event.params.previousOwner,
@@ -187,4 +196,5 @@ Asset.OwnershipTransferred.handler(async ({ event, context }) => {
 
     context.AssetEntity.set(updatedAsset);
   }
-});
+}
+);
