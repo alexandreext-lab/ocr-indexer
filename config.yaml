@@ -21,7 +21,7 @@ contracts:
       - event: SubscriptionRevoked(address indexed user)
       - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
 
-networks:
+chains:
   # Sepolia
   - id: 11155111
     start_block: 10299077
@@ -66,6 +66,4 @@ networks:
   #       address:
   #         - "0x31c2823a3D9Bed91F5ae62F3F3D674A0Bf36b795"
 
-unordered_multichain_mode: true
-preload_handlers: true
 address_format: lowercase
